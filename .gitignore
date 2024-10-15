@@ -56,3 +56,6 @@ $RECYCLE.BIN/
 
 # Ignore node modules
 *node_modules
+
+# Ignore ENV files
+*.env
