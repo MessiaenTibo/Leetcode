@@ -53,3 +53,6 @@ $RECYCLE.BIN/
 
 # Ignore code problems
 /Code Problems
+
+# Ignore node modules
+*node_modules
