@@ -1,1 +1,18 @@
-<p>navigation works!</p>
+<mat-toolbar color="">
+  <div>
+    <a routerLink="/">
+      <span>Leetcode</span>
+    </a>
+  </div>
+  <div class="navigation-routes">
+    <a routerLinkActive="active-link" routerLink="/code-problems">
+      <span>Problems</span>
+    </a>
+    <a routerLinkActive="active-link" routerLink="/login">
+      <span>Login</span>
+    </a>
+    <a routerLinkActive="active-link" routerLink="/signup">
+      <span>signup</span>
+    </a>
+  </div>
+</mat-toolbar>
