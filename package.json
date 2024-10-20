@@ -1,0 +1,10 @@
+{
+  "name": "main-folder",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm start --prefix backend\" \"npm start --prefix frontend/Leetcode\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
