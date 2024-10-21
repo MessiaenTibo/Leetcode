@@ -2,7 +2,7 @@ mat-toolbar {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0 64px;
+  padding: 0 8px;
   background-color: #fefeff;
 }
 
@@ -47,4 +47,11 @@ a:hover::after {
 .navigation-routes {
   display: flex;
   gap: 1rem;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 600px) {
+  mat-toolbar {
+    padding: 0 64px;
+  }
 }

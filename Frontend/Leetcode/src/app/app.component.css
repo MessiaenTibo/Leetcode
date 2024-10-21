@@ -4,10 +4,13 @@ app-navigation {
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.1);
 }
 
-.container {
+.outerContainer {
   display: flex;
   justify-content: center;
+}
+
+.innerContainer {
   flex: 1 1 0%;
   padding: 60px 20px 0 20px;
-  height: max-content;
+  max-width: 1366px;
 }

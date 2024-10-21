@@ -1,0 +1,45 @@
+p {
+  max-width: 50rem;
+  margin-bottom: 5rem;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  width: 100%;
+}
+
+.side {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16rem;
+  height: 6rem;
+  border-radius: 0.5rem;
+  background-color: #003559;
+  color: white;
+  font-size: larger;
+  font-weight: 500;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .homeContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  .side {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+}
