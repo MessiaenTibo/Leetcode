@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -11,13 +12,13 @@ import { AuthService } from '../../services/auth.service';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.signupForm = this.creatFormGroup();
+    this.signupForm = this.createFormGroup();
   }
 
-  creatFormGroup(): FormGroup {
+  createFormGroup(): FormGroup {
     return new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,8 +30,9 @@ export class SignupComponent implements OnInit {
   }
 
   signup(): void {
-    this.authService
-      .signup(this.signupForm.value)
-      .subscribe((msg) => console.log(msg));
+    this.authService.signup(this.signupForm.value).subscribe((msg) => {
+      console.log(msg);
+      this.router.navigate(['login']);
+    });
   }
 }
