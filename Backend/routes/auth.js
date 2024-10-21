@@ -1,11 +1,7 @@
 const express = require('express');
-
-const { body } = require('express-validator');
-
+const { body, validationResult } = require('express-validator');
 const router = express.Router();
-
 const User = require('../models/user');
-
 const authController = require('../controllers/auth');
 
 router.post(
@@ -18,13 +14,30 @@ router.post(
       .custom(async (email) => {
         const user = await User.find(email);
         if (user[0].length > 0) {
-          return Promise.reject('Email address already exist!');
+          // Throw an error if email already exists
+          throw new Error('Email address already exists!');
         }
       })
       .normalizeEmail(),
     body('password').trim().isLength({ min: 7 }),
   ],
-  authController.signup
+  async (req, res, next) => {
+    // Validate the input fields
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // Map the errors to a simple array of error messages
+      const errorMessages = errors.array().map((error) => error.msg);
+      return res.status(422).json({ errors: errorMessages });
+    }
+
+    // Proceed with signup logic in the auth controller
+    try {
+      await authController.signup(req, res, next);
+    } catch (err) {
+      // Handle any unexpected errors
+      next(err);
+    }
+  }
 );
 
 module.exports = router;
